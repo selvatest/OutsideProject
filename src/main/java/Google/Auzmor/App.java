@@ -2,6 +2,7 @@ package Google.Auzmor;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class App
 	}
 	
 	@Test(dataProvider="datasheet")
-    public void main(String data) throws FileNotFoundException
+    public void main(String data) throws IOException
     {
        // System.out.println( "Hello World!" );
     	
@@ -52,9 +53,9 @@ public class App
     		String linktext=b.getText();
     		String path=System.getProperty("user.dir");
 			System.out.println(path);
-			FileInputStream fis = new FileInputStream(path+"\\InputData.xlsx");
-			XSSFWorkbook wb =new XSSFWorkbook(fis);
-			XSSFSheet sh=wb.getSheet("data");
+			FileOutputStream fis = new FileOutputStream(path+"\\OutputData.xlsx");
+			XSSFWorkbook wb =new XSSFWorkbook();
+			XSSFSheet sh=wb.createSheet("data");
     		System.out.println(linktext);
     	}
      }
